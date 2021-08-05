@@ -1,0 +1,9 @@
+.link {
+  color: brown;
+}
+
+.linkActive {
+  color: darkmagenta;
+  font-size: large;
+  font-weight: bold;
+}
