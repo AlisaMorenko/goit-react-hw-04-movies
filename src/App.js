@@ -2,9 +2,9 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import AppBar from './components/AppBar';
 
-import HomePageView from './views/HomePage';
-import MoviesPageView from './views/MoviesPage';
-import MovieDetailsPageView from './views/MovieDetailsPage';
+import HomePage from './views/HomePage';
+import MoviesPage from './views/MoviesPage';
+import MovieDetailsPage from './views/MovieDetailsPage';
 import NotFoundView from './views/NotFound';
 
 // import './App.css';
@@ -16,15 +16,15 @@ export default function App() {
 
       <Switch>
         <Route path="/" exact>
-          <HomePageView />
+          <HomePage />
         </Route>
 
         <Route path="/movies" exact>
-          <MoviesPageView />
+          <MoviesPage />
         </Route>
 
         <Route path="/movies/:movieId">
-          <MovieDetailsPageView />
+          <MovieDetailsPage />
         </Route>
 
         <Route>
