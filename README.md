@@ -91,10 +91,4 @@ This section has moved here:
 [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 ...................................
 
-1. нужно сделать все запросы в одном файле
-2. убедиться, что сделала верно ссылку, с домашней стр на стр информацией об
-   одном фильме
-3. сделать нормальный рендер инфо о фильме на одной стр с фильмом
-4. подумать над стр в ревьюс
-5. для вложенніх маршрутов используется path, а не url
-6. Попробовать загрузить лоадер в фоллбек при ленивой загрузке
+8 убрать везде консоли 9. сделать пагинацию в хоумпейдж и ревьюс??

@@ -1,12 +1,24 @@
 import React from 'react';
+import { lazy, Suspense } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import AppBar from './components/AppBar';
 
-import HomePage from './views/HomePage';
-import MoviesPage from './views/MoviesPage';
-import MovieDetailsPage from './views/MovieDetailsPage';
-import NotFoundView from './views/NotFound';
+import Loader from 'react-loader-spinner';
 
+const HomePage = lazy(() =>
+  import('./views/HomePage.js' /* webpackChunkName: "homePage" */),
+);
+const MoviesPage = lazy(() =>
+  import('./views/MoviesPage.js' /* webpackChunkName: "MoviesPage" */),
+);
+const MovieDetailsPage = lazy(() =>
+  import(
+    './views/MovieDetailsPage.js' /* webpackChunkName: "MovieDetailsPage" */
+  ),
+);
+const NotFoundView = lazy(() =>
+  import('./views/NotFound.js' /* webpackChunkName: "NotFoundView" */),
+);
 // import './App.css';
 
 export default function App() {
@@ -14,23 +26,29 @@ export default function App() {
     <div>
       <AppBar />
 
-      <Switch>
-        <Route path="/" exact>
-          <HomePage />
-        </Route>
+      <Suspense
+        fallback={
+          <Loader type="ThreeDots" color="#393d53" height={80} width={80} />
+        }
+      >
+        <Switch>
+          <Route path="/" exact>
+            <HomePage />
+          </Route>
 
-        <Route path="/movies" exact>
-          <MoviesPage />
-        </Route>
+          <Route path="/movies" exact>
+            <MoviesPage />
+          </Route>
 
-        <Route path="/movies/:movieId">
-          <MovieDetailsPage />
-        </Route>
+          <Route path="/movies/:movieId">
+            <MovieDetailsPage />
+          </Route>
 
-        <Route>
-          <NotFoundView />
-        </Route>
-      </Switch>
+          <Route>
+            <NotFoundView />
+          </Route>
+        </Switch>
+      </Suspense>
     </div>
   );
 }

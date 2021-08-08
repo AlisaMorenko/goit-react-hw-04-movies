@@ -1,30 +1,49 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import movieAPI from '../services/movie-trending-api';
+import * as movieAPI from '../services/service-api';
 
 export default function HomePageView() {
-  // const { url } = useRouteMatch();
   const location = useLocation();
   const [movies, setMovies] = useState([]);
+  const [error, setError] = useState(null);
+
   useEffect(() => {
-    movieAPI.fetchMovies().then(setMovies);
+    movieAPI
+      .fetchTrending()
+      .then(data => {
+        return data.results;
+      })
+      .then(setMovies)
+      .catch(error => {
+        setError(error);
+      });
   }, []);
+
   return (
-    <ul>
-      {movies.map(movie => (
-        <li key={movie.id}>
-          <Link
-            to={{
-              pathname: `/movies/${movie.id}`,
-              state: { from: location },
-            }}
-          >
-            {movie.original_title}
-          </Link>
-        </li>
-      ))}
-    </ul>
+    <>
+      <h1>Popular movies today</h1>
+      {error && <p>Sorry... Try again later...</p>}
+      <ul>
+        {movies.map(({ id, original_title, vote_average, poster_path }) => (
+          <li key={id}>
+            <div>
+              <Link
+                to={{
+                  pathname: `/movies/${id}`,
+                  state: { from: location },
+                }}
+              >
+                <img
+                  src={`https://image.tmdb.org/t/p/w400${poster_path}`}
+                  alt={'poster'}
+                />
+                <h1>{original_title}</h1>
+                <p>Raiting: {vote_average}</p>
+              </Link>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </>
   );
 }
-//здесь я сделала не через юрл а через /мувис и заработала загрузка поп фильмов прям с домашней стр, но я не уверена, что так правильно
-//сделать загрузку загрузить еще??
