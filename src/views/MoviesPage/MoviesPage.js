@@ -61,6 +61,7 @@ export default function MoviesPage() {
   const resetState = () => {
     setPage(1);
     setMovies([]);
+    setSearchQuery('');
   };
 
   const handleClickButton = () => {
@@ -127,4 +128,3 @@ export default function MoviesPage() {
     </>
   );
 }
-// css
