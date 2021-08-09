@@ -5,30 +5,29 @@ import AppBar from './components/AppBar';
 
 import Loader from 'react-loader-spinner';
 
+import styles from './App.module.css';
+
 const HomePage = lazy(() =>
-  import('./views/HomePage.js' /* webpackChunkName: "homePage" */),
+  import('./views/HomePage' /* webpackChunkName: "homePage" */),
 );
 const MoviesPage = lazy(() =>
-  import('./views/MoviesPage.js' /* webpackChunkName: "MoviesPage" */),
+  import('./views/MoviesPage' /* webpackChunkName: "MoviesPage" */),
 );
 const MovieDetailsPage = lazy(() =>
-  import(
-    './views/MovieDetailsPage.js' /* webpackChunkName: "MovieDetailsPage" */
-  ),
+  import('./views/MovieDetailsPage' /* webpackChunkName: "MovieDetailsPage" */),
 );
 const NotFoundView = lazy(() =>
   import('./views/NotFound.js' /* webpackChunkName: "NotFoundView" */),
 );
-// import './App.css';
 
 export default function App() {
   return (
-    <div>
+    <div className={styles.container}>
       <AppBar />
 
       <Suspense
         fallback={
-          <Loader type="ThreeDots" color="#393d53" height={80} width={80} />
+          <Loader type="ThreeDots" color="#cb0b10" height={80} width={80} />
         }
       >
         <Switch>

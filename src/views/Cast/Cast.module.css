@@ -1,0 +1,31 @@
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: -5px;
+  margin: 30px 0px;
+}
+
+.item {
+  width: 150px;
+  border-radius: 20px;
+  justify-content: center;
+  margin: 5px;
+  background-color: #120000;
+}
+
+.img {
+  /* width: 100px; */
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.chracter {
+  color: #fc4208;
+}
+
+.error {
+  color: red;
+  border-bottom: red;
+  font-size: 30px;
+}

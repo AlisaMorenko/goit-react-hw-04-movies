@@ -1,0 +1,15 @@
+.reviews {
+  margin: 40px 0px;
+}
+
+.item {
+  margin: 10px;
+  background-color: #120000;
+  color: #95030e;
+  border-bottom: 1px solid #fc4208;
+}
+
+.text {
+  text-align: left;
+  color: #ff731c;
+}

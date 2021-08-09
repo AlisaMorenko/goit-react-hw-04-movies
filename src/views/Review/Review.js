@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
-import * as movieAPI from '../services/service-api';
+import * as movieAPI from '../../services/service-api';
+
+import styles from './Review.module.css';
 
 export default function Review() {
   const [reviews, setReviews] = useState([]);
@@ -24,12 +26,12 @@ export default function Review() {
     <>
       {error && <p>Sorry... Try again later...</p>}
       {reviews.length > 0 ? (
-        <ul>
+        <ul className={styles.reviews}>
           {reviews.map(({ id, author, created_at, content }) => (
-            <li key={id}>
-              <p>{author}</p>
-              <p>{created_at}</p>
-              <p>{content}</p>
+            <li key={id} className={styles.item}>
+              <p>Author: {author}</p>
+              <p>Create: {created_at}</p>
+              <p className={styles.text}>{content}</p>
             </li>
           ))}
         </ul>
@@ -39,5 +41,3 @@ export default function Review() {
     </>
   );
 }
-//по хорошему тут тоже пагинация нужна
-//разделение и стили

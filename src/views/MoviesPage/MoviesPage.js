@@ -4,7 +4,9 @@ import { Link, useRouteMatch, useLocation, useHistory } from 'react-router-dom';
 import queryString from 'query-string';
 import Loader from 'react-loader-spinner';
 
-import * as movieAPI from '../services/service-api';
+import * as movieAPI from '../../services/service-api';
+
+import styles from './MoviesPage.module.css';
 
 export default function MoviesPage() {
   const { url } = useRouteMatch();
@@ -67,9 +69,9 @@ export default function MoviesPage() {
 
   return (
     <>
-      <header>
-        <form onSubmit={handleSubmit}>
-          <button type="submit">
+      <header className={styles.form}>
+        <form onSubmit={handleSubmit} className={styles.searchForm}>
+          <button type="submit" className={styles.button}>
             <span>Search</span>
           </button>
 
@@ -80,16 +82,17 @@ export default function MoviesPage() {
             placeholder="Search movies..."
             value={searchQuery}
             onChange={handleQueryChange}
+            className={styles.input}
           />
         </form>
       </header>
 
-      {error && <p>Sorry... Try again later...</p>}
+      {error && <p className={styles.error}>Sorry... Try again later...</p>}
 
-      <ul>
+      <ul className={styles.list}>
         {movies.map(
           ({ id, poster_path, original_title, release_date, vote_average }) => (
-            <li key={id}>
+            <li key={id} className={styles.item}>
               <Link
                 to={{
                   pathname: `${url}/${id}`,
@@ -97,22 +100,27 @@ export default function MoviesPage() {
                 }}
               >
                 <img
+                  className={styles.img}
                   src={`https://image.tmdb.org/t/p/w400/${poster_path}`}
                   alt={'poster'}
                 />
-                <h1>{original_title}</h1>
-                <p>Release: {release_date}</p>
-                <p>Raiting: {vote_average}</p>
+                <h1 className={styles.movieTittle}>{original_title}</h1>
+                <p className={styles.movieRaiting}>Release: {release_date}</p>
+                <p className={styles.movieRaiting}>Raiting: {vote_average}</p>
               </Link>
             </li>
           ),
         )}
         {isLoading && (
-          <Loader type="ThreeDots" color="#393d53" height={80} width={80} />
+          <Loader type="ThreeDots" color="#cb0b10" height={80} width={80} />
         )}
       </ul>
       {movies.length > 0 && (
-        <button type="button" onClick={handleClickButton}>
+        <button
+          type="button"
+          onClick={handleClickButton}
+          className={styles.button}
+        >
           Load more
         </button>
       )}

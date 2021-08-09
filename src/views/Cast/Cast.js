@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import * as movieAPI from '../services/service-api';
+import * as movieAPI from '../../services/service-api';
+
+import styles from './Cast.module.css';
 
 export default function Cast() {
   const [actors, setActors] = useState([]);
@@ -21,25 +23,20 @@ export default function Cast() {
 
   return (
     <>
-      {error && <p>Sorry... Try again later...</p>}
-      <ul>
+      {error && <p className={styles.error}>Sorry... Try again later...</p>}
+      <ul className={styles.list}>
         {actors.map(actor => (
-          <li key={actor.id}>
+          <li key={actor.id} className={styles.item}>
             <img
+              className={styles.img}
               src={`https://image.tmdb.org/t/p/w500/${actor.profile_path}`}
               alt={'actor'}
             />
             <p>{actor.name}</p>
-            <p>character: {actor.character}</p>
-            <p></p>
+            <p className={styles.chracter}>Character: {actor.character}</p>
           </li>
         ))}
       </ul>
     </>
   );
 }
-
-//++фото
-//++имя
-//++кого сіграл
-/////////////////////// стили и разделение кода

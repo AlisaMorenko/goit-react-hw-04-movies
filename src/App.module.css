@@ -1,0 +1,19 @@
+.container {
+  max-width: 1200px;
+  /* background-color: #1d0000; */
+  padding: 30px 15px 70px;
+  margin-left: auto;
+  margin-right: auto;
+  background: -webkit-linear-gradient(
+    315deg,
+    rgb(239, 100, 14),
+    rgb(19, 2, 2) 35%
+  );
+  background: -moz-linear-gradient(
+    315deg,
+    rgb(239, 100, 14),
+    rgb(19, 2, 2) 35%
+  );
+  background: linear-gradient(315deg, rgb(239, 100, 14), rgb(19, 2, 2) 35%);
+  padding-bottom: 70px;
+}
