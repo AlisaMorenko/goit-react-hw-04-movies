@@ -107,11 +107,13 @@ export default function MoviesPage() {
                     state: { from: location },
                   }}
                 >
-                  <img
-                    className={styles.img}
-                    src={`https://image.tmdb.org/t/p/w400/${poster_path}`}
-                    alt={'poster'}
-                  />
+                  {poster_path && (
+                    <img
+                      className={styles.img}
+                      src={`https://image.tmdb.org/t/p/w400/${poster_path}`}
+                      alt={'poster'}
+                    />
+                  )}
                   <h1 className={styles.movieTittle}>{original_title}</h1>
                   <p className={styles.movieRaiting}>Release: {release_date}</p>
                   <p className={styles.movieRaiting}>Raiting: {vote_average}</p>
