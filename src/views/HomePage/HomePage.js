@@ -25,28 +25,30 @@ export default function HomePageView() {
     <>
       <h1 className={styles.tittle}>Popular movies today</h1>
       {error && <p className={styles.error}>Sorry... Try again later...</p>}
-      <ul className={styles.list}>
-        {movies.map(({ id, original_title, vote_average, poster_path }) => (
-          <li key={id} className={styles.item}>
-            {/* <div> */}
-            <Link
-              to={{
-                pathname: `/movies/${id}`,
-                state: { from: location },
-              }}
-            >
-              <img
-                className={styles.img}
-                src={`https://image.tmdb.org/t/p/w400${poster_path}`}
-                alt={'poster'}
-              />
-              <h2 className={styles.movieTittle}>{original_title}</h2>
-              <p className={styles.movieRaiting}>Raiting: {vote_average}</p>
-            </Link>
-            {/* </div> */}
-          </li>
-        ))}
-      </ul>
+      {movies && (
+        <ul className={styles.list}>
+          {movies.map(({ id, original_title, vote_average, poster_path }) => (
+            <li key={id} className={styles.item}>
+              {/* <div> */}
+              <Link
+                to={{
+                  pathname: `/movies/${id}`,
+                  state: { from: location },
+                }}
+              >
+                <img
+                  className={styles.img}
+                  src={`https://image.tmdb.org/t/p/w400${poster_path}`}
+                  alt={'poster'}
+                />
+                <h2 className={styles.movieTittle}>{original_title}</h2>
+                <p className={styles.movieRaiting}>Raiting: {vote_average}</p>
+              </Link>
+              {/* </div> */}
+            </li>
+          ))}
+        </ul>
+      )}
     </>
   );
 }

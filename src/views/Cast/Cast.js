@@ -24,19 +24,21 @@ export default function Cast() {
   return (
     <>
       {error && <p className={styles.error}>Sorry... Try again later...</p>}
-      <ul className={styles.list}>
-        {actors.map(actor => (
-          <li key={actor.id} className={styles.item}>
-            <img
-              className={styles.img}
-              src={`https://image.tmdb.org/t/p/w500/${actor.profile_path}`}
-              alt={'actor'}
-            />
-            <p>{actor.name}</p>
-            <p className={styles.chracter}>Character: {actor.character}</p>
-          </li>
-        ))}
-      </ul>
+      {actors && (
+        <ul className={styles.list}>
+          {actors.map(actor => (
+            <li key={actor.id} className={styles.item}>
+              <img
+                className={styles.img}
+                src={`https://image.tmdb.org/t/p/w500/${actor.profile_path}`}
+                alt={'actor'}
+              />
+              <p>{actor.name}</p>
+              <p className={styles.chracter}>Character: {actor.character}</p>
+            </li>
+          ))}
+        </ul>
+      )}
     </>
   );
 }

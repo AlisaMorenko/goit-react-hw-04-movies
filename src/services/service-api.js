@@ -16,7 +16,7 @@ export function fetchTrending() {
 
 export function fetchSearchMovies(searchQuery, page) {
   return fetchMovies(
-    `${BASE_URL}/search/movie/?api_key=${KEY}&page=${page}&include_adult=false&query=${searchQuery}`,
+    `${BASE_URL}/search/movie?api_key=${KEY}&page=${page}&include_adult=false&query=${searchQuery}`,
   );
 }
 

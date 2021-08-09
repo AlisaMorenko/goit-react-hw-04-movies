@@ -45,6 +45,7 @@ export default function MovieDetailsPageView() {
     vote_average,
     overview,
   } = movie;
+
   return (
     <>
       {error && <p>Sorry... Try again later...</p>}
@@ -52,7 +53,8 @@ export default function MovieDetailsPageView() {
       <button type="button" onClick={onGoBack} className={styles.button}>
         Go back
       </button>
-      <div>
+
+      {movie && (
         <article className={styles.general}>
           <img
             className={styles.img}
@@ -69,11 +71,15 @@ export default function MovieDetailsPageView() {
             <h3>Genres</h3>
             <ul className={styles.genres}>
               {genres &&
-                genres.map(({ id, name }) => <li key={id}>{name} / </li>)}
+                genres.map(({ id, name }) => (
+                  <li key={id} className={styles.genresItem}>
+                    {name}{' '}
+                  </li>
+                ))}
             </ul>
           </div>
         </article>
-      </div>
+      )}
 
       <div>
         <h4> Additional information </h4>

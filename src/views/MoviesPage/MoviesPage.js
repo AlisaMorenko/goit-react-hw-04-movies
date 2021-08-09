@@ -90,32 +90,40 @@ export default function MoviesPage() {
 
       {error && <p className={styles.error}>Sorry... Try again later...</p>}
 
-      <ul className={styles.list}>
-        {movies.map(
-          ({ id, poster_path, original_title, release_date, vote_average }) => (
-            <li key={id} className={styles.item}>
-              <Link
-                to={{
-                  pathname: `${url}/${id}`,
-                  state: { from: location },
-                }}
-              >
-                <img
-                  className={styles.img}
-                  src={`https://image.tmdb.org/t/p/w400/${poster_path}`}
-                  alt={'poster'}
-                />
-                <h1 className={styles.movieTittle}>{original_title}</h1>
-                <p className={styles.movieRaiting}>Release: {release_date}</p>
-                <p className={styles.movieRaiting}>Raiting: {vote_average}</p>
-              </Link>
-            </li>
-          ),
-        )}
-        {isLoading && (
-          <Loader type="ThreeDots" color="#cb0b10" height={80} width={80} />
-        )}
-      </ul>
+      {movies && (
+        <ul className={styles.list}>
+          {movies.map(
+            ({
+              id,
+              poster_path,
+              original_title,
+              release_date,
+              vote_average,
+            }) => (
+              <li key={id} className={styles.item}>
+                <Link
+                  to={{
+                    pathname: `${url}/${id}`,
+                    state: { from: location },
+                  }}
+                >
+                  <img
+                    className={styles.img}
+                    src={`https://image.tmdb.org/t/p/w400/${poster_path}`}
+                    alt={'poster'}
+                  />
+                  <h1 className={styles.movieTittle}>{original_title}</h1>
+                  <p className={styles.movieRaiting}>Release: {release_date}</p>
+                  <p className={styles.movieRaiting}>Raiting: {vote_average}</p>
+                </Link>
+              </li>
+            ),
+          )}
+        </ul>
+      )}
+      {isLoading && (
+        <Loader type="ThreeDots" color="#cb0b10" height={80} width={80} />
+      )}
       {movies.length > 0 && (
         <button
           type="button"
