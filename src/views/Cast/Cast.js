@@ -28,11 +28,13 @@ export default function Cast() {
         <ul className={styles.list}>
           {actors.map(actor => (
             <li key={actor.id} className={styles.item}>
-              <img
-                className={styles.img}
-                src={`https://image.tmdb.org/t/p/w500/${actor.profile_path}`}
-                alt={'actor'}
-              />
+              {actor.profile_path && (
+                <img
+                  className={styles.img}
+                  src={`https://image.tmdb.org/t/p/w500/${actor.profile_path}`}
+                  alt={'actor'}
+                />
+              )}
               <p>{actor.name}</p>
               <p className={styles.chracter}>Character: {actor.character}</p>
             </li>
