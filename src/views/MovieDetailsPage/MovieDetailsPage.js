@@ -56,11 +56,13 @@ export default function MovieDetailsPageView() {
 
       {movie && (
         <article className={styles.general}>
-          <img
-            className={styles.img}
-            src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
-            alt={'poster'}
-          />
+          {poster_path && (
+            <img
+              className={styles.img}
+              src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
+              alt={'poster'}
+            />
+          )}
 
           <div className={styles.info}>
             <h1 className={styles.movieTittle}>{original_title}</h1>
